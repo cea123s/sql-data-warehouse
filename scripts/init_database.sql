@@ -12,11 +12,33 @@
     y asegurarse de tener los backups necesarios antes de correr este script.
 */
 
--- Dropea la BBDD "DataWarehouse" para evitar errores
+USE master; -- Cambiamos a la base de datos maestra del sistema
+GO
 
-DROP DATABASE IF EXISTS DataWarehouse;
+-- Si existe, dropea la BBDD "DataWarehouse" para evitar errores
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+  BEGIN
+    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE DataWarehouse;
+  END
+GO
 
 -- Creamos la base de datos "DataWarehouse"
   
 CREATE DATABASE DataWarehouse;
+GO
+  
 USE DataWarehouse;
+GO
+  
+-- Creamos el esquema de cada capa
+
+CREATE SCHEMA bronze;
+GO
+  
+CREATE SCHEMA silver;
+GO
+  
+CREATE SCHEMA gold;
+GO

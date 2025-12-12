@@ -34,7 +34,8 @@ Estos insights proveen a los stakeholders con métricas claves del negocio, habi
 ---
 
 ## Licencia
-Este proyecto se encuentra bajo la licencia [MIT License]([url](https://opensource.org/license/mit)).
+Este proyecto se encuentra bajo la licencia [MIT License][url]
+[url]: https://opensource.org/license/mit
 
 ## Acerca de mí
 Hola! Me llamo Cristian Añon. Soy Licenciado en Artes Electrónicas, y me gusta combinar la rigurosidad técnica con la creativad y el diseño. Tengo amplia experiencia en el sector IT. Actualmente, estoy formandome en el mundo de los datos. Me apasionan la tecnología, la acústica y la creación de soluciones a problemas reales. 

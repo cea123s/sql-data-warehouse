@@ -10,7 +10,7 @@ Se destaca el uso de las mejores prácticas en ingeniería y análisis de datos 
 ### Creando el Data Warehouse (Ingeniería de Datos)
 
 #### Objetivo
-Desarrollar un data warehouse moderno utilizando MySQL para consolidar la información de ventas, permitiendo la generación de informes analíticos y la toma de decisiones informadas.
+Desarrollar un data warehouse moderno utilizando SQL Server para consolidar la información de ventas, permitiendo la generación de informes analíticos y la toma de decisiones informadas.
 
 #### Especificaciones
 -**Origen de los Datos**: Se importan los datos de dos sistemas (ERP y CRM) provistos como archivos _.csv_.
@@ -37,4 +37,4 @@ Estos insights proveen a los stakeholders con métricas claves del negocio, habi
 Este proyecto se encuentra bajo la licencia [MIT License](https://opensource.org/license/mit).
 
 ## Acerca de mí
-Hola! Me llamo Cristian Añon. Soy Licenciado en Artes Electrónicas, y me gusta combinar la rigurosidad técnica con la creativad y el diseño. Tengo amplia experiencia en el sector IT. Actualmente, estoy formandome en el mundo de los datos. Me apasionan la tecnología, la acústica y la creación de soluciones a problemas reales. 
+Hola! Me llamo Cristian Añon. Soy Licenciado en Artes Electrónicas, y me gusta combinar la rigurosidad técnica con la creativad y el diseño. Tengo amplia experiencia en el sector IT. Me apasionan la tecnología, la acústica y la creación de soluciones a problemas reales. 

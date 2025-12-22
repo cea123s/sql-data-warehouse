@@ -1,3 +1,12 @@
+/*
+=============================================================
+DDL Script: Crea las tablas para la capa Silver
+=============================================================
+Propósito del script:
+	Este script crea las tablas en el esquema 'Silver'. Si ya existen, primero las dropea antes de crearlas.
+	Correr este script para redifinir la estructura DDL de las tablas.
+*/
+
 IF OBJECT_ID ('silver.crm_cust_info', 'U') IS NOT NULL -- Dropeamos la tabla antes de volver a crearla. Es útil si necesitamos modificarla.
     DROP TABLE silver.crm_cust_info;
 

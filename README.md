@@ -1,6 +1,6 @@
 # Data Warehouse y Analítica
 
-Este proyecto muestra una solución de data warehousing y análisis de datos. Desde la creación del data warehouse, hasta la generación de insights accionables. 
+Este proyecto muestra una solución de almacén de datos (data warehouse) y análisis de datos. Va desde la creación del data warehouse, hasta la generación de insights accionables. 
 Se destaca el uso de las mejores prácticas en ingeniería y análisis de datos de la industria.
 
 ---

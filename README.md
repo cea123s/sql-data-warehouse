@@ -2,17 +2,12 @@
 
 ## Descripción General del Proyecto
 
-Este repositorio muestra el diseño de un Data Warehouse moderno utilizando Microsoft SQL Server con:
+Este repositorio muestra el diseño y desarrollo de un data warehouse moderno utilizando Microsoft SQL Server para consolidar la información de ventas, permitiendo la generación de informes analíticos y la toma de decisiones informadas.
 
 1. **Arquitectura de Datos Medallion**: Capas **Bronze**, **Silver** y **Gold**.
 2. **Pipelines ETL**: Extracción, transformación y carga de datos desde los sistemas de origen hacia el almacén.
 3. **Modelado de Datos**: Desarrollo de tablas de hechos y dimensiones optimizadas para consultas analíticas.
 4. **Analítica e Informes**: Creación de informes basados en SQL y tableros para obtener información estratégica.
-
-### Creando el Data Warehouse (Ingeniería de Datos)
-
-#### Objetivo
-Desarrollar un data warehouse moderno utilizando SQL Server para consolidar la información de ventas, permitiendo la generación de informes analíticos y la toma de decisiones informadas.
 
 #### Especificaciones
 -**Origen de los Datos**: Se importan los datos de dos sistemas (ERP y CRM) provistos como archivos _.csv_.

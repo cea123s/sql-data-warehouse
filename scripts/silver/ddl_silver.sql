@@ -7,7 +7,7 @@ Propósito del script:
 	Correr este script para redifinir la estructura DDL de las tablas.
 */
 
-IF OBJECT_ID ('silver.crm_cust_info', 'U') IS NOT NULL -- Dropeamos la tabla antes de volver a crearla. Es útil si necesitamos modificarla.
+IF OBJECT_ID ('silver.crm_cust_info', 'U') IS NOT NULL -- Dropeamos la tabla antes de volver a crearla. Es necesario si necesitamos modificarla.
     DROP TABLE silver.crm_cust_info;
 
 CREATE TABLE silver.crm_cust_info (

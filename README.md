@@ -7,19 +7,21 @@ Diseño y desarrollo de un data warehouse moderno utilizando Microsoft SQL Serve
 Este proyecto sigue la Arquitectura Medallion con las capas **Bronze**, **Silver** y **Gold**:
 ![Arquitectura de Datos](docs/dwh_architecture.png)
 
-1. **Capa Bronze**: Almacena los datos brutos tal cual provienen de los sistemas de origen. Los datos se cargan desde archivos _.csv_ a una base de datos en SQL Server.
-2. **Capa Silver**: Esta capa incluye procesos de limpieza, estandarización y normalización de datos para prepararlos para el análisis.
+1. **Capa Bronze**: Almacenamiento de los datos en bruto tal cual provienen de los sistemas de origen.
+2. **Capa Silver**: Procesos de limpieza, estandarización y normalización de datos para prepararlos para el análisis.
 3. **Capa Gold**: Alberga los datos listos para el negocio, modelados en un esquema de estrella necesario para informes y analítica.
 
 ---
 
 #### Información General
+
 1. **Arquitectura de Datos**: Arquitectura Medallion con capas **Bronze**, **Silver** y **Gold**.
 2. **Pipelines ETL**: Métodos de extracción, transformación y carga de datos desde los sistemas de origen hacia el almacén.
 3. **Modelado de Datos**: Desarrollo de tablas de hechos y dimensiones optimizadas para consultas analíticas.
 4. **Analítica e Informes**: Creación de informes basados en SQL y tableros para obtener información estratégica.
 
 #### Especificaciones
+
 * **Origen de los Datos**: Se importan los datos de dos sistemas (ERP y CRM) provistos como archivos _.csv_.
 * **Calidad de los Datos**: Limpieza y resolución de problemas relacionados a la calidad de los datos antes del análisis.
 * **Integración**: Combinar ambas fuentes en un único, y simple modelo de datos diseñado para realizar consultas analíticas.

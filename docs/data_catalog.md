@@ -1,7 +1,7 @@
-# Catálogo de Datos para la Capa Oro
+# Catálogo de Datos para la Capa "Gold"
 
 ## Descripción General
-La **Capa Oro** es la representación de datos a nivel de negocio, estructurada para soportar casos de uso analíticos y de generación de reportes. Consiste en **tablas de dimensiones** y **tablas de hechos** para métricas específicas del negocio.
+La **Capa Gold** es la representación de datos a nivel de negocio, estructurada para soportar casos de uso analíticos y de generación de reportes. Consiste en **tablas de dimensiones** y **tablas de hechos** para métricas específicas del negocio.
 
 ---
 

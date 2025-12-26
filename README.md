@@ -5,7 +5,7 @@ Diseño y desarrollo de un data warehouse moderno utilizando Microsoft SQL Serve
 ## Arquitectura de Datos
 
 Este proyecto sigue la Arquitectura Medallion con las capas **Bronze**, **Silver** y **Gold**:
-![Arquitectura de Datos](docs/data_architecture.png)
+![Arquitectura de Datos](docs/dwh_architecture.png)
 
 1. **Capa Bronze**: Almacena los datos brutos tal cual provienen de los sistemas de origen. Los datos se cargan desde archivos _.csv_ a una base de datos en SQL Server.
 2. **Capa Silver**: Esta capa incluye procesos de limpieza, estandarización y normalización de datos para prepararlos para el análisis.

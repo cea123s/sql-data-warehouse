@@ -3,10 +3,10 @@
 Procedimiento Almacenado: Carga de la capa 'Silver' (Bronze -> Silver)
 =======================================================================
 Propósito del Script:
-  Este procedimiento almacenado ejecuta el proceso de ETL (Extract, Transform, Load) para poblar las tablas del esquema 'Silver', desde el esquema 'Bronze'.
+  Este procedimiento almacenado ejecuta el proceso de ETL (Extract, Transform, Load) para poblar las tablas del esquema 'Silver' desde el esquema 'Bronze'.
 Acciones:
   -Trunca las tablas.
-  -Inserta la data transformada y limpia desde Bronze hacia Silver.
+  -Inserta la data limpia y transformada desde Bronze hacia Silver.
 Parámetros:
   Ninguno.
   Este procedimiento almacenado no acepta ningún parámetro, ni devuelve valores.
@@ -100,7 +100,7 @@ BEGIN
 			WHEN 'S' THEN 'Other Sales'
 			WHEN 'T' THEN 'Touring'
 			ELSE 'n/a'
-		END AS prd_line, -- Mapeamos los códigos de la línea del producto a valores descriptivos (consultados)
+		END AS prd_line, -- Mapeamos los códigos de la línea del producto a valores descriptivos
 		CAST(prd_start_dt AS DATE) AS prd_start_dt, -- Casteo el tipo de dato, de DATETIME a DATE
 		CAST(
 			LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1 
@@ -136,20 +136,20 @@ BEGIN
 		CASE
 			WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL
 			ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
-		END AS sls_order_dt, -- Si la fecha de la órden es inválida, la transformamos a null. Sino, la casteamos al tipo DATE
+		END AS sls_order_dt, -- Si la fecha de la órden es inválida, la transformamos a NULL. Sino, la casteamos al tipo DATE
 		CASE
 			WHEN sls_ship_dt = 0 OR LEN(sls_ship_dt) != 8 THEN NULL
 			ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
-		END AS sls_ship_dt, -- Si la fecha del envío es inválida, la transformamos a null. Sino, la casteamos al tipo DATE
+		END AS sls_ship_dt, -- Si la fecha del envío es inválida, la transformamos a NULL. Sino, la casteamos al tipo DATE
 		CASE
 			WHEN sls_due_dt = 0 OR LEN(sls_due_dt) != 8 THEN NULL
 			ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
-		END AS sls_due_dt, -- Si la fecha de vencimiento es inválida, la transformamos a null. Sino, la casteamos al tipo DATE
+		END AS sls_due_dt, -- Si la fecha de vencimiento es inválida, la transformamos a NULL. Sino, la casteamos al tipo DATE
 		CASE
 			WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price) 
 				THEN sls_quantity * ABS(sls_price)
 			ELSE sls_sales
-		END sls_sales, -- Recalculamos las ventas si el valor original es null o incorrecto
+		END sls_sales, -- Recalculamos las ventas si el valor original es NULL o incorrecto
 		sls_quantity,
 		CASE
 			WHEN sls_price IS NULL OR sls_price <= 0

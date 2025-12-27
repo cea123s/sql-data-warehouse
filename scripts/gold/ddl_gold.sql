@@ -1,12 +1,12 @@
 /*
 ===============================================================================
-DDL Script: Crear Vistas de la Capa de Oro
+DDL Script: Crear Vistas de la Capa Gold
 ===============================================================================
 Propósito del Script:
-    Este script crea las vistas para la Capa de Oro en el data warehouse.
-    La Capa de Oro (Gold Layer) representa las tablas de dimensión y de hecho, en un esquema estrella.
+    Este script crea las vistas para la capa gold en el data warehouse.
+    La capa gold representa las tablas de dimensión y de hecho, en un esquema estrella.
 
-    Cada vista ejecuta transformaciones y combina los datos de la Capa de Plata (Silver Layer),
+    Cada vista ejecuta transformaciones y combina los datos de la capa silver,
     para crear un dataset limpio y enriquecido, listo para ser utilizado a nivel de negocio.
 
 Uso:

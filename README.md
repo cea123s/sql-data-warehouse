@@ -121,6 +121,6 @@ sql-data-warehouse/
 Este proyecto se encuentra bajo la licencia [MIT License](https://opensource.org/license/mit).
 
 ## Acerca de mí
-Me llamo Cristian Añon. Soy Licenciado en Artes Electrónicas, y me gusta combinar la rigurosidad técnica con la creativad y el diseño. Me apasionan la tecnología, la acústica y la creación de soluciones a problemas reales.
+Me llamo Cristian Añon. Soy Licenciado en Artes Electrónicas con amplia experiencia en el campo IT. Combino la rigurosidad técnica con el diseño, la creatividad y la comunicación.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ceanon)

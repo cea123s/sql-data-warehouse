@@ -1,34 +1,34 @@
-# Data Warehouse con SQL
+# Data Warehouse en SQL Server para Analítica de Negocio
 
-Diseño y desarrollo de un data warehouse moderno utilizando **Microsoft SQL Server** para consolidar la información de ventas, permitir la generación de informes analíticos, y la toma de decisiones informadas.
-Se utilizaron datasets provenientes de sistemas ERP y CRM de un negocio de productos de ciclismo.
+## Descripción general
+
+Este proyecto presenta una solución de _Data Warehousing_ en **Microsoft SQL Server**. Está diseñada para consolidar información de **ventas**, **productos** y **clientes** de un negocio de insumos para ciclismo. 
+Los datos de origen provienen de sistemas CRM y ERP, inicialmente en formato CSV sin procesar y dispersos. La solución integra y transforma estos datos en un modelo centralizado, facilitando la generación de reportes, dashboards y análisis de negocio.
 
 ## Arquitectura de Datos
 
-Este proyecto sigue la [Arquitectura Medallion](https://learn.microsoft.com/en-us/azure/databricks/lakehouse/medallion) con las capas **Bronze**, **Silver** y **Gold**:
+El proyecto aplica la [Arquitectura Medallion](https://learn.microsoft.com/en-us/azure/databricks/lakehouse/medallion), asegurando trazabilidad y consistencia mediante las capas **Bronze**, **Silver** y **Gold**.
 
 ![Arquitectura de Datos](docs/dwh_architecture.png)
 
-1. **Capa Bronze**: Almacenamiento de los datos en bruto tal cual provienen de los sistemas de origen.
-2. **Capa Silver**: Procesos de limpieza, estandarización y normalización de datos para el análisis.
-3. **Capa Gold**: Alberga los datos listos para el negocio, modelados en un esquema de estrella útil para informes y analítica.
+1. **Capa Bronze**: Almacenamiento de datos en bruto tal como provienen de los sistemas de origen.
+2. **Capa Silver**: Procesos de limpieza, estandarización y normalización de datos para análisis.
+3. **Capa Gold**: Datos listos para el negocio, modelados en un esquema estrella para informes y analítica.
 
 ---
 
-#### Información General
-
-1. **Arquitectura de Datos**: Arquitectura Medallion con capas **Bronze**, **Silver** y **Gold**.
-2. **Pipelines ETL**: Métodos de extracción, transformación y carga de datos desde los sistemas de origen hacia el almacén.
-3. **Modelado de Datos**: Desarrollo de tablas de hechos y dimensiones optimizadas para consultas analíticas.
-4. **Analítica e Informes**: Creación de informes basados en SQL y tableros para obtener información estratégica.
-
 #### Especificaciones
 
-* **Origen de los Datos**: Se importan los datos de dos sistemas (ERP y CRM) provistos como archivos _.csv_.
+* **Arquitectura de Datos**: Medallion (Bronze, Silver, Gold).
+* **Pipelines ETL**: Extracción, transformación y carga desde sistemas de origen hacia el almacén.
+* **Modelado de Datos**: Tablas de hechos y dimensiones optimizadas para consultas analíticas.
+* **Analítica e Informes**: Habilita la creación de informes basados en SQL y tableros, para obtener información estratégica.
+
+* **Origen de los Datos**: Dos sistemas (ERP y CRM) provistos como archivos CSV.
 * **Calidad de los Datos**: Limpieza y resolución de problemas relacionados a la calidad de los datos.
-* **Integración**: Combinar ambas fuentes en un único y simple modelo de datos, diseñado para realizar consultas analíticas.
-* **Alcance**: Se concentra en el dataset más nuevo posibl; la historización de los datos no es requerida.
-* **Documentación**: Proveer documentación clara del modelo de datos para apoyar tanto al equipo de análisis como a los _stakeholders_.
+* **Integración**: Unificación de ambas fuentes en un modelo de datos simple y eficiente, diseñado para realizar consultas analíticas.
+* **Alcance**: Se trabaja con el dataset más actual, sin requerimientos de historización en esta etapa.
+* **Documentación**: Catálogo y documentación clara del modelo de datos para analistas y _stakeholders_.
 
 ---
 
@@ -41,13 +41,12 @@ Este proyecto sigue la [Arquitectura Medallion](https://learn.microsoft.com/en-u
 
 **Transformaciones y Limpieza**:
 * Eliminación de duplicados
-* Filtración de datos
-* Manejo de valores faltantes o iválidos
+* Filtrado de datos
+* Gestión de valores nulos o inconsistentes
 * Manejo de espacios no deseados
 * Casteo de datos
 * Detección de _outliers_
-* Enriquecimiento de datos
-* Integración de datos
+* Enriquecimiento e integración de datos
 * Derivación de Columnas
 * Normalización y Estandarización
 * Reglas y lógica del negocio
@@ -55,8 +54,8 @@ Este proyecto sigue la [Arquitectura Medallion](https://learn.microsoft.com/en-u
 
 **Carga**:
 * Tipo de procesamiento: Batch Processing
-* Método de Carga: Full Load - Truncate & Insert
-* Slowly Changing Dimensiones: SCD 1 (Overwrite)
+* Método de Carga: Full Load (Truncate & Insert)
+* Slowly Changing Dimensions: SCD 1 (Overwrite)
 
 ---
 ## Flujo de Datos
@@ -77,41 +76,41 @@ Este proyecto sigue la [Arquitectura Medallion](https://learn.microsoft.com/en-u
 
 ## Implementación: de forma local o en servidor externo
 
-1. Ejecutar _init_database.sql_ para crear la base de datos junto con los esquemas bronze, silver y gold
-2. Ejecutar _ddl_bronze.sql_ para crear y definir las tablas del esquema bronze.
-3. Ejectuar _proc_load_bronze.sql_ para crear el procedimiento almacenado que carga los datos en bruto desde los archivos _.csv_.
-4. Ejectuar el procedimiento con EXECUTE proc_load_bronze para poblar el esquema bronze.
-5. Ejecutar _ddl_silver.sql_ para crear y definir las tablas del esquema silver.
-6. Ejectuar _proc_load_silver.sql_ para crear el procedimiento almacenado que carga los datos limpios y validados en el esquema silver.
-7. Ejecutar el procedimiento con EXECUTE proc_load_silver para poblar el esquema silver.
-8. Ejectuar _ddl_gold.sql_ para crear y cargar las vistas de la capa gold.
-9. Hacer consultas directamente a las tablas de las vistas de la capa gold.
+1. Ejecutar _init_database.sql_ para crear la base de datos y los esquemas Bronze, Silver y Gold.
+2. Ejecutar _ddl_bronze.sql_ para definir las tablas del esquema Bronze.
+3. Ejectuar _proc_load_bronze.sql_ para crear el procedimiento que carga los datos en bruto desde los archivos _.csv_.
+4. Ejectuar el procedimiento con EXECUTE proc_load_bronze para poblar el esquema Bronze.
+5. Ejecutar _ddl_silver.sql_ para definir las tablas del esquema silver.
+6. Ejectuar _proc_load_silver.sql_ para crear el procedimiento que carga los datos limpios y validados en el esquema Silver.
+7. Ejecutar el procedimiento con EXECUTE proc_load_silver para poblar el esquema Silver.
+8. Ejectuar _ddl_gold.sql_ para crear y cargar las vistas del esquema Gold.
+9. Consultar directamente las tablas y vistas del esquema Gold.
 
 ---
 ## Estructura del Repositorio
 ```
 sql-data-warehouse/
 │
-├── datasets/                           # Datasets en bruto utilizados para el proyecto (ERP y CRM).
+├── datasets/                           # Datasets en bruto (ERP y CRM)
 │
 ├── docs/                               # Documentación del proyecto y detalles de su arquitectura
-│   ├── data_architecture.png           # Arquitectura del Data Warehouse
-│   ├── data_catalog.md                 # Catálogo del dataset con descripción de cada campo
+│   ├── data_architecture.png           # Diagrama de Arquitectura
+│   ├── data_catalog.md                 # Catálogo del dataset
 │   ├── data_flow.png                   # Diagrama de flujo de datos
 │   ├── data_models.png                 # Diagrama del modelo de datos
-│   ├── naming-conventions.md           # Convenciones utilizadas para nombrar tablas, columnas y archivos
+│   ├── naming-conventions.md           # Convenciones de nombres
 │
-├── scripts/                            # Scripts en SQL
-│   ├── bronze/                         # Scripts para extraer y cargar los datos en bruto
-│       ├── ddl_bronze.sql              # Crea y define todas las tablas del esquema bronze
-│       ├── proc_load_bronze.sql        # Procedimiento Almacenado para cargar los datos crudos
-│   ├── silver/                         # Scripts para limpiar y transformar los datos
-│       ├── ddl_silver.sql              # Crea y define todas las tablas del esquema silver
-│       ├── proc_load_silver.sql        # Procedimiento Almacenado para poblar el esquema silver con los datos limpios 
-│   ├── gold/                           # Scripts para crear un modelo analítico de datos
-│       ├── ddl_golds.sql               # Crea y define todas las vistas de la capa gold
+├── scripts/                            # Scripts SQL
+│   ├── bronze/                         # Extracción y carga de datos en bruto  
+│       ├── ddl_bronze.sql  
+│       ├── proc_load_bronze.sql  
+│   ├── silver/                         # Limpieza y transformación  
+│       ├── ddl_silver.sql  
+│       ├── proc_load_silver.sql  
+│   ├── gold/                           # Modelo analítico  
+│       ├── ddl_gold.sql  
 │
-├── tests/                              # Scripts para realizar test y asegurar la calidad de los datos
+├── tests/                              # Testing y control de calidad
 │
 ├── README.md                           # Descripción del proyecto
 └── LICENSE                             # Información sobre la licencia del repositorio
